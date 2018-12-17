@@ -1,0 +1,10 @@
+param:
+    T_C: 15                             # [Celcius]
+    Nadc_mic: 12                        # ADC resolution [bit]
+    # Pmic: 10^-12                      # power consumption of passive mic [mW]
+    Pmic: 17*10^-3                      # power consumption of active mic [mW] 
+    # v_n_in_rms: 10 *10^-6             # RMS voltage of the noise as input (passive mic) [V]
+    v_n_in_rms: 100*10^-6               # RMS voltage of the noise as input (active mic) [V]
+    Vdd_LNA_mic: 1.5                    # [V]
+    NEF: 10                             
+    FOMadc: 500*10^(-15)*10^3           # [mJ/conv]

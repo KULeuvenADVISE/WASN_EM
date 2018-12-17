@@ -1,0 +1,54 @@
+constants:
+  fs_audio: NaN # sampling frequency [Hz]
+  T: NaN # sensing duration [s]
+  channels: 1 # amount of microphone channels
+  S: NaN # word size
+
+chain:
+# Sampling/ADC
+  - layer_name: ADC
+    config:
+      fs: fs_audio
+      window_size: T
+      channels: channels
+    memory: {parameters: 1, output: 1, output_save: True}
+# Framing
+  - layer_name: tdframing
+    config:
+      window_size: 30/1000*fs_audio
+      step_size: 10/1000*fs_audio
+    memory: {parameters: 1, output: 1, output_save: False}
+# Windowing of framed audio
+  - layer_name: Windowing
+    memory: {parameters: 1, output: 1, output_save: False}
+    wordsize: S
+# FFT of framed audio
+  - layer_name: FFT_1D_Radix2
+    memory: {parameters: 1, output: 1, output_save: False}
+    wordsize: S
+# Power of framed audio
+  - layer_name: ComplexPower
+    memory: {parameters: 1, output: 1, output_save: False}
+    wordsize: S
+# Mel filterbank
+  - layer_name: Melscale_filterbank
+    config:
+      melbands: 26
+    memory: {parameters: 1, output: 1, output_save: False}
+    wordsize: S
+# Log
+  - layer_name: Log
+    memory: {parameters: 1, output: 1, output_save: False}
+    wordsize: S
+# DCT
+  - layer_name: DCT_1D
+    config:
+      coef: 14
+    memory: {parameters: 1, output: 1, output_save: False}
+    wordsize: S
+# Delta/delta delta
+  - layer_name: D_DD
+    config:
+      window: 9
+    memory: {parameters: 1, output: 1, output_save: False}
+    wordsize: S

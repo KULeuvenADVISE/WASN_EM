@@ -1,0 +1,15 @@
+constants:
+  CLASS_COUNT: 10
+  CHANNELS:  NaN
+  FEATURE_VECTOR_LENGTH: NaN
+  INPUT_SEQUENCE_LENGTH: NaN
+  S: NaN # word size
+chain:
+  # Output layer
+  - layer_name: Dense
+    config:
+      units: CLASS_COUNT
+      input_shape: CHANNELS*FEATURE_VECTOR_LENGTH*INPUT_SEQUENCE_LENGTH
+      activation: softmax
+    memory: {parameters: 1, output: 1, output_save: True}
+    wordsize: S

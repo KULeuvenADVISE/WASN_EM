@@ -1,0 +1,41 @@
+param:
+    ## Sensing params
+    T: 1                          # Duration of sensing needed for one estimate
+    fs_audio: 16000                 # sampling frequency [Hz]
+    channels: 1                     # channels
+    ## Battery params
+    battery_charge: 2100            # battery capacity - AA NiMH [mAh]
+    battery_n: 1                    # amount of batteries used
+    battery_efficiency: 0.8         # battery efficiency  
+    battery_V: 2.2                  # battery voltage
+    battery_joules: battery_n * battery_charge*battery_efficiency * battery_V * 3600 # [mJ]
+    ## Processing architecture
+    S: 16                           # Precision/word size [bit]
+    Eop: 500*10^(-9)                # [mJ] # GPP
+    # Eop: 100*10^(-9)                # [mJ] # DSP
+    # Eop: 10*10^(-9)                 # [mJ] # ASIP
+    # Eop: 1*10^(-9)                  # [mJ] # ASIC
+    c: [2, 1, 1, 8, 1, 2, 25]       # [c_mac, c_add, c_mul, c_div, c_cmp, c_exp, c_log] (Table 2) >> [MAC, ADD, Multiplication, Division, Comparator, e^x, log], GPP/DSP
+    # c: [1, 1, 1, 1, 1, 1, 1]       # [c_mac, c_add, c_mul, c_div, c_cmp, c_exp, c_log] (Table 2) >> [MAC, ADD, Multiplication, Division, Comparator, e^x, log], ASIP/ASIC
+    ## Memory specific parameters
+    memacc_c: [4, 2, 2, 2, 2, 1, 1]                 # Amount of memory accesses for each operation
+    nr_mem: 3                                       # Number of memory options available
+    Ema: [100*10^(-12), 100*10^(-9), 100*10^(-9)]   # Energy per memory access, [on-chip SRAM, off-chip SRAM, off-chip DRAM] [mJ/bit] (Table 2)
+    Ems: [50*10^(-9), 10*10^(-9), 75*10^(-9)]       # Energy memory leakage, [on-chip SRAM, off-chip SRAM, off-chip DRAM] [mW/bit] (Table 2)
+    stand_mem: 2                                    # standard memory id where everything should be stored (in case not provided by feat/classf config)
+    stand_mem_ow: 0                                 # Overwrite used memory for the entire processing layer config [true/false] 
+    stand_outsave: 1                                # standard setting if output of layer is stored in-place or not [true/false]. 
+    stand_outacc: 1                                 # standard setting of how many mem accesses of a certain operation are comming from data of prev layer
+    ## Other
+    macid: 1    # operation category index ids [MAC, ADD, Multiplication, Division, Comparator, e^x, log], multiply-acc
+    addid: 2    # addition id
+    multid: 3   # multiplication id
+    divid: 4    # division id
+    compid: 5   # comparator
+    expid: 6    # exponential
+    logid: 7    # logarithm
+    nr_arop: 7  # number of arithmetic operations
+    chid: 1     # dimension index ids, channel
+    featid: 2   # feature id
+    frameid: 3  # time id
+    nr_dimensions: 3 #total dimensions

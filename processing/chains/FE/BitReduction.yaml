@@ -1,0 +1,11 @@
+constants:
+  CHANNELS:  NaN
+  FEATURE_VECTOR_LENGTH: NaN
+  INPUT_SEQUENCE_LENGTH: NaN
+
+chain:
+  - layer_name: BitReduction
+    config:
+      input_shape: [CHANNELS, FEATURE_VECTOR_LENGTH, INPUT_SEQUENCE_LENGTH] # [channel, data, time]
+    memory: {parameters: 1, output: 1, S: 8, output_save: False}
+  
