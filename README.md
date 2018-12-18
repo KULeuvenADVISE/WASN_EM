@@ -9,7 +9,7 @@ To help to attain this goal, this paper introduces *WASN-EM*: an energy consumpt
 
 This repository contains the source code of the WASN Energy Model described in:
 
-[G. Dekkers, F. Rosas, S. Lauwereins, S. Rajendran, S. Pollin, B. Vanrumste, T. van Waterschoot, M. Verhelst and P. Karsmakers, “A multi-layered energy consumption model for smart wireless acoustic sensor networks],” KU Leuven, Tech. Rep., December 2018](https://arxiv.org/abs/1812.06672).
+[G. Dekkers, F. Rosas, S. Lauwereins, S. Rajendran, S. Pollin, B. Vanrumste, T. van Waterschoot, M. Verhelst and P. Karsmakers, “A multi-layered energy consumption model for smart wireless acoustic sensor networks,” KU Leuven, Tech. Rep., December 2018](https://arxiv.org/abs/1812.06672).
 
 Authors: 
 
