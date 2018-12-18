@@ -7,7 +7,9 @@ which can convey highly informative data while keeping a moderate energy consump
 To help to attain this goal, this paper introduces *WASN-EM*: an energy consumption model for wireless acoustic sensors networks (WASN), whose aim is to aid in the development of novel techniques to increase the energy-efficient of smart wireless acoustic sensors. This model provides a first step of exploration prior to custom design of a smart wireless acoustic sensor, and also can be used to compare the energy consumption of different protocols.
 
 
-This repository contains the source code of the WASN Energy Model described in **[Ref arXiv]**.
+This repository contains the source code of the WASN Energy Model described in:
+
+[G. Dekkers, F. Rosas, S. Lauwereins, S. Rajendran, S. Pollin, B. Vanrumste, T. van Waterschoot, M. Verhelst and P. Karsmakers, “A multi-layered energy consumption model for smart wireless acoustic sensor networks],” KU Leuven, Tech. Rep., December 2018](https://arxiv.org/abs/1812.06672).
 
 Authors: 
 
@@ -17,43 +19,43 @@ Authors:
 ## Getting started
 
 1. Clone repository from [Github](https://github.com/WASN_EM). 
-2. Read the technical report available in at **[Ref arXiv]**.
+2. Read the technical report: [A multi-layered energy consumption model for smart wireless acoustic sensor networks](https://arxiv.org/abs/1812.06672).
 3. Run the script ``main.m``
 4. Current parameters of the chain match the parameters described in a technical report. Adjust as you like!
 5. Missing processing layers? **Please feel free to contribute.** The power of this model is that it could create a common ground for researchers to compare. Details on how to contribute can be found below. 
 
 ## Repository overview
     .
-    ├── main.m							# main code
-    ├── general/						# Folder containing the sensing model related configurations and functions
+    ├── main.m						# main code
+    ├── general/					# Folder containing the sensing model related configurations and functions
 		├──── general_loadparam.m		# Function to load the general parameters of the model
-		└──── params/					# Folder containing the different parameter files
+		└──── params/				# Folder containing the different parameter files
 			└────── default.yaml		# A default example based on the technical paper
-    ├── sensing/						# Folder containing the sensing model related configurations and functions
+    ├── sensing/					# Folder containing the sensing model related configurations and functions
 		├──── sensing_consumption.m		# Function to calculate the energy spend in sensing
 		└──── sensing_param.m			# Function containing the sensing related parameters
-    ├── processing/						# Folder containing the processing related chains and layers
+    ├── processing/					# Folder containing the processing related chains and layers
 		├──── proc_loadparam.m			# Function to read the processing chain from the yaml file
-		├──── proc_info.m				# Function to translate the chain to complexity, number of parameters and output shapes
+		├──── proc_info.m			# Function to translate the chain to complexity, number of parameters and output shapes
 		├──── memo_acc_stor.m			# Function to obtain memory storage and accesses given the chain
 		├──── bits_to_energy.m			# Function which converts ops, bits to be stored and memory access to an energy value 
-		└──── chains/					# Folder containing the processing chains
-			├────── FE/					# Feature extraction chains
-			├────── NN/					# Neural Network chains
-			└────── ADC.yaml			# Processing chain including only a ADC layer.
-		└──── layers/					# Folder containing the layers used in the chains
-			├────── FE/					# Feature Extraction layers
-			├────── NN/					# Neural Network layers
-			├────── .../				# you can add other layers (e.g. SVM) if you want to contribute
-			└────── ADC.yaml			# ADC layer to include the storage cost of the sensing layer
+		└──── chains/				# Folder containing the processing chains
+			├────── FE/			# Feature extraction chains
+			├────── NN/			# Neural Network chains
+			└────── ADC.yaml		# Processing chain including only a ADC layer.
+		└──── layers/				# Folder containing the layers used in the chains
+			├────── FE/			# Feature Extraction layers
+			├────── NN/			# Neural Network layers
+			├────── .../			# you can add other layers (e.g. SVM) if you want to contribute
+			└────── ADC.yaml		# ADC layer to include the storage cost of the sensing layer
     ├── communication/					# Folder containing the communication model related configurations and functions
 		├──── comm_consumption.m		# Function to calculate the energy spend in communicating
 		├──── comm_loadparam.m			# Function to load the communication parameters of the model
-		└──── params/					# Folder containing the different parameter files
+		└──── params/				# Folder containing the different parameter files
 			└────── default.yaml		# A default example based on the technical paper
-    ├── utils/							# A folder containing utility functions 
-    ├── LICENSE							# license file
-    └── README.md						# Readme file
+    ├── utils/						# A folder containing utility functions 
+    ├── LICENSE						# license file
+    └── README.md					# Readme file
 
 ## Code summary
 
@@ -136,23 +138,23 @@ The code consists of a set of commonly used processing layers. These layers (e.g
 	3	  variable2: value2	# ..
 	4	  variable3: value3	# ..
 	5	  fs_audio: NaN		# parameter by string reference overloading
-	6	  T: NaN			# ..
+	6	  T: NaN		# ..
 	7	  channels: NaN		# ..
-	8	  S: NaN			# ..
+	8	  S: NaN		# ..
 	9	
 	10	chain:
-	11	  - class_name: ADC			# layer name (string name of behaviour function) 
-	12	    config:					# layer parameters
-	13	      fs: FS				# parameter by string reference
+	11	  - class_name: ADC		# layer name (string name of behaviour function) 
+	12	    config:			# layer parameters
+	13	      fs: FS			# parameter by string reference
 	14	      window_size: T		# ..
 	15	      channels: CHANNELS	# ..
 	16	    memory: {parameters: 1/2/..., output: 1/2..., output_save: True/False}	# optional
 	17		wordsize: S																# optional
 	18	  - class_name: layer2  
 	19	    config:
-	20	      variable2_1: variable1					# parameter by string reference
-	21		  variable2_2: variable2*FS					# equation using parameter by string reference
-	22		  variable2_3: (variable1*variable2)/2		# ..
+	20	      variable2_1: variable1			# parameter by string reference
+	21		  variable2_2: variable2*FS		# equation using parameter by string reference
+	22		  variable2_3: (variable1*variable2)/2	# ..
 
 A typical configuration file consists of two branches. 
 
@@ -228,6 +230,6 @@ Such a function has three main parts: a) computation of output shape, b) computa
 
 When using the script for research one should refer to the following paper:
 
-G. Dekkers, F. Rosas, S. Lauwereins, S. Rajendran, S. Pollin, B. Vanrumste, T. van Waterschoot, M. Verhelst and Peter Karsmakers, “An energy consumption model for smart wireless acoustic sensors,” KU Leuven, Tech. Rep., November 2018.
+G. Dekkers, F. Rosas, S. Lauwereins, S. Rajendran, S. Pollin, B. Vanrumste, T. van Waterschoot, M. Verhelst and Peter Karsmakers, “A multi-layered energy consumption model for smart wireless acoustic sensor networks],” KU Leuven, Tech. Rep., December 2018.
 
 The script is released under the terms of the [MIT License](https://github.com/WASN_EM/LICENSE).
