@@ -24,36 +24,36 @@ Authors:
 
 ## Repository overview
     .
-    ├── main.m							# main code
-    ├── general/						# Folder containing the sensing model related configurations and functions
+    ├── main.m						# main code
+    ├── general/					# Folder containing the sensing model related configurations and functions
 		├──── general_loadparam.m		# Function to load the general parameters of the model
-		└──── params/					# Folder containing the different parameter files
+		└──── params/				# Folder containing the different parameter files
 			└────── default.yaml		# A default example based on the technical paper
-    ├── sensing/						# Folder containing the sensing model related configurations and functions
+    ├── sensing/					# Folder containing the sensing model related configurations and functions
 		├──── sensing_consumption.m		# Function to calculate the energy spend in sensing
 		└──── sensing_param.m			# Function containing the sensing related parameters
-    ├── processing/						# Folder containing the processing related chains and layers
+    ├── processing/					# Folder containing the processing related chains and layers
 		├──── proc_loadparam.m			# Function to read the processing chain from the yaml file
-		├──── proc_info.m				# Function to translate the chain to complexity, number of parameters and output shapes
+		├──── proc_info.m			# Function to translate the chain to complexity, number of parameters and output shapes
 		├──── memo_acc_stor.m			# Function to obtain memory storage and accesses given the chain
 		├──── bits_to_energy.m			# Function which converts ops, bits to be stored and memory access to an energy value 
-		└──── chains/					# Folder containing the processing chains
-			├────── FE/					# Feature extraction chains
-			├────── NN/					# Neural Network chains
-			└────── ADC.yaml			# Processing chain including only a ADC layer.
-		└──── layers/					# Folder containing the layers used in the chains
-			├────── FE/					# Feature Extraction layers
-			├────── NN/					# Neural Network layers
-			├────── .../				# you can add other layers (e.g. SVM) if you want to contribute
-			└────── ADC.yaml			# ADC layer to include the storage cost of the sensing layer
+		└──── chains/				# Folder containing the processing chains
+			├────── FE/			# Feature extraction chains
+			├────── NN/			# Neural Network chains
+			└────── ADC.yaml		# Processing chain including only a ADC layer.
+		└──── layers/				# Folder containing the layers used in the chains
+			├────── FE/			# Feature Extraction layers
+			├────── NN/			# Neural Network layers
+			├────── .../			# you can add other layers (e.g. SVM) if you want to contribute
+			└────── ADC.yaml		# ADC layer to include the storage cost of the sensing layer
     ├── communication/					# Folder containing the communication model related configurations and functions
 		├──── comm_consumption.m		# Function to calculate the energy spend in communicating
 		├──── comm_loadparam.m			# Function to load the communication parameters of the model
-		└──── params/					# Folder containing the different parameter files
+		└──── params/				# Folder containing the different parameter files
 			└────── default.yaml		# A default example based on the technical paper
-    ├── utils/							# A folder containing utility functions 
-    ├── LICENSE							# license file
-    └── README.md						# Readme file
+    ├── utils/						# A folder containing utility functions 
+    ├── LICENSE						# license file
+    └── README.md					# Readme file
 
 ## Code summary
 
@@ -136,23 +136,23 @@ The code consists of a set of commonly used processing layers. These layers (e.g
 	3	  variable2: value2	# ..
 	4	  variable3: value3	# ..
 	5	  fs_audio: NaN		# parameter by string reference overloading
-	6	  T: NaN			# ..
+	6	  T: NaN		# ..
 	7	  channels: NaN		# ..
-	8	  S: NaN			# ..
+	8	  S: NaN		# ..
 	9	
 	10	chain:
-	11	  - class_name: ADC			# layer name (string name of behaviour function) 
-	12	    config:					# layer parameters
-	13	      fs: FS				# parameter by string reference
+	11	  - class_name: ADC		# layer name (string name of behaviour function) 
+	12	    config:			# layer parameters
+	13	      fs: FS			# parameter by string reference
 	14	      window_size: T		# ..
 	15	      channels: CHANNELS	# ..
 	16	    memory: {parameters: 1/2/..., output: 1/2..., output_save: True/False}	# optional
 	17		wordsize: S																# optional
 	18	  - class_name: layer2  
 	19	    config:
-	20	      variable2_1: variable1					# parameter by string reference
-	21		  variable2_2: variable2*FS					# equation using parameter by string reference
-	22		  variable2_3: (variable1*variable2)/2		# ..
+	20	      variable2_1: variable1			# parameter by string reference
+	21		  variable2_2: variable2*FS		# equation using parameter by string reference
+	22		  variable2_3: (variable1*variable2)/2	# ..
 
 A typical configuration file consists of two branches. 
 
