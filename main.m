@@ -25,7 +25,7 @@ gen.method = 'default'; % name of the general config file
 sens.method = 'default'; % name of sensing config file
 % proc{1}.method = 'ADC';
 proc{1}.method = 'FE/framelogMel'; % name of the first processing chain (typically FE). if no FE => 'FE/ADC'
-proc{2}.method = 'NN/CNN_example'; % name of second processing chain (typically classifier) or remove line
+proc{2}.method = 'NN/CNN_1D_example'; % name of second processing chain (typically classifier) or remove line
 comm.method = 'default'; % name of communication config file
 % get general param
 gen = general_loadparam(gen.method,[]); % get general parameters (fs, µC, ..)

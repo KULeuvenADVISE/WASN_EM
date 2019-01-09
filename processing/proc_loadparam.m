@@ -20,7 +20,7 @@ gen.FEATURE_VECTOR_LENGTH = input_shape(featid);
 gen.INPUT_SEQUENCE_LENGTH = input_shape(frameid);
 end
 
-if isempty(dir_str) % if empty, use default
+if isempty(dir_str)&&~ischar(dir_str) % if empty, use default
     dir_str = fullfile('processing','chains');
 end
 

@@ -18,7 +18,7 @@ param:
     c: [2, 1, 1, 8, 1, 2, 25]       # [c_mac, c_add, c_mul, c_div, c_cmp, c_exp, c_log] (Table 2) >> [MAC, ADD, Multiplication, Division, Comparator, e^x, log], GPP/DSP
     # c: [1, 1, 1, 1, 1, 1, 1]       # [c_mac, c_add, c_mul, c_div, c_cmp, c_exp, c_log] (Table 2) >> [MAC, ADD, Multiplication, Division, Comparator, e^x, log], ASIP/ASIC
     ## Memory specific parameters
-    memacc_c: [4, 2, 2, 2, 2, 1, 1]                 # Amount of memory accesses for each operation
+    memacc_c: [4, 3, 3, 3, 3, 2, 2]                 # Amount of memory accesses for each operation
     nr_mem: 3                                       # Number of memory options available
     Ema: [100*10^(-12), 100*10^(-9), 100*10^(-9)]   # Energy per memory access, [on-chip SRAM, off-chip SRAM, off-chip DRAM] [mJ/bit] (Table 2)
     Ems: [50*10^(-9), 10*10^(-9), 75*10^(-9)]       # Energy memory leakage, [on-chip SRAM, off-chip SRAM, off-chip DRAM] [mW/bit] (Table 2)

@@ -10,12 +10,12 @@ constants:
 
 chain:
   # Conv layer
-  - layer_name: Conv2D
+  - layer_name: Conv1D
     config:
       input_shape: [CHANNELS, FEATURE_VECTOR_LENGTH, INPUT_SEQUENCE_LENGTH] # [channel, data, time]
       filters: 64
-      kernel_size: [FEATURE_VECTOR_LENGTH, 5]
-      strides: [1,1]
+      kernel_size: 5
+      strides: 1
       padding: CONVOLUTION_BORDER_MODE
       use_bias: 1
     memory: {parameters: 1, output: 1, output_save: True}
@@ -32,10 +32,10 @@ chain:
     memory: {parameters: 1, output: 1, output_save: False}
     wordsize: S
   # Pooling layer
-  - layer_name: MaxPooling2D
+  - layer_name: MaxPooling1D
     config:
-      pool_size: [1, 5]
-      strides: [1, 5]
+      pool_size: 5
+      strides: 5
     memory: {parameters: 1, output: 1, output_save: False}
     wordsize: S
   # Drop out layer
@@ -45,11 +45,11 @@ chain:
     memory: {parameters: 1, output: 1, output_save: False}
     wordsize: S
   # Conv. layer 
-  - layer_name: Conv2D
+  - layer_name: Conv1D
     config:
       filters: 128
-      kernel_size: [1,5]
-      strides: [1,1]
+      kernel_size: 5
+      strides: 1
       padding: CONVOLUTION_BORDER_MODE
       use_bias: 1
     memory: {parameters: 1, output: 1, output_save: True}
@@ -67,7 +67,7 @@ chain:
     memory: {parameters: 1, output: 1, output_save: False}
     wordsize: S
   # Pooling layer
-  - layer_name: GlobalMaxPooling2D
+  - layer_name: GlobalMaxPooling
     memory: {parameters: 1, output: 1, output_save: False}
     wordsize: S
   # Drop out layer
